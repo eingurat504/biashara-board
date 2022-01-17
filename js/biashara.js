@@ -1,4 +1,4 @@
-function drag(ev) {
+        function drag(ev) {
             ev.dataTransfer.setData("text", ev.target.id);
         }
 
@@ -28,16 +28,6 @@ function drag(ev) {
         }
 
         function saveTask(){
-            // var saveButton = document.getElementById("save-button");
-            // var editButton = document.getElementById("edit-button");
-            // if (saveButton.style.display === "none") {
-            //     saveButton.style.display = "block";
-            //     editButton.style.display = "none";
-            // } else{
-            //     saveButton.style.display = "none";
-            //     editButton.style.display = "block";
-            // }
-
             var todo = document.getElementById("todo");
             var taskName = document.getElementById("task-name").value;
             todo.innerHTML += `
@@ -58,4 +48,13 @@ function drag(ev) {
                 editButton.style.display = "block";
             }
         }
+
+        // shows the #modal element
+toggleModal('modal');
+
+// hides the #modal element
+toggleModal('modal', false);
+
+// also shows the #modal element
+toggleModal('modal', true);
         
