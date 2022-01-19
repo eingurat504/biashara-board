@@ -318,55 +318,31 @@
                     </div>
                 </div>
             </div>
-        </header>        <div class="content container">
+        </header>        
+
+        <div class="content container">
         <h2 class="page-title">Dashboard <small>Statistics and more</small></h2>
+
         <div class="row">
             <div id="add_list" class="col-lg-3">
                 <section class="widget">
                       <h4><i class="glyphicon glyphicon-plus"></i> Add a list</h4>
-                      <!-- <input id="input-card" type="text" class="form-control" placeholder="Add a list"> -->
                 </section>
             </div>
-            <div class="col-lg-3">
-                <section class="widget">
-                    <header>
-                        <h4>ToDo</h4>
-                        <div class="widget-controls">
-                            <!-- <a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                            <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
-                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a> -->
-                            <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-                        </div>
-                    </header>
-                </section>
-            </div>
-              <div class="col-lg-3">
-                <section class="widget">
-                    <header>
-                        <h4 id="ongoing">Ongoing</h4>
-                        <div class="widget-controls">
-                            <!-- <a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                            <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
-                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a> -->
-                            <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-                        </div>
-                    </header>
-                </section>
-            </div>
-              <div class="col-lg-3">
-                <section class="widget">
-                    <header>
-                        <h4>Done</h4>
-                        <div class="widget-controls">
-                            <!-- <a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                            <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
-                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a> -->
-                            <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-                        </div>
-                    </header>
-                </section>
-            </div>
+        </div>
 
+        <div class="row">
+            <div id="fn" hidden class="col-lg-3" style="width: 350px;">
+                <section class="widget">
+                    <!-- <header> -->
+                        <input type="text" class="form-control" placeholder="name" />
+                        <div class="widget-controls">
+                            <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                        </div>
+                    <!-- </header> -->
+                </section>
+            </div>
+         
         </div>
         </div>
         <div class="loader-wrap hiding hide">
@@ -440,7 +416,10 @@
             $(document).ready(function () { 
 
                 $("#add_list").click(function(){
-                    $("#add_list").html("<h1>Hello, World!</h1>");     
+
+                    var showing = $("#fn").show();
+
+                    $("#add_list").html(showing);     
                 });
 
             });
