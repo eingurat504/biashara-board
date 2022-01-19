@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\CardCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $cardcategories = CardCategory::all();
+
+        return view('home',[
+            'cardcategories' => $cardcategories 
+        ]);
     }
 }

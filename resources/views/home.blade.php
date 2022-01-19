@@ -6,7 +6,7 @@
              
         <div class="content container">
 
-        <h2 class="page-title">Dashboard <small>Statistics and more</small></h2>
+        <h2 class="page-title">Dashboard</h2>
 
         <div id="fn" class="row" hidden class="col-lg-3" style="width: 350px;">
             <form class="no-margin"
@@ -38,35 +38,24 @@
                 </form>
         </div>
         <div class="row">
-            <div class="col-lg-3">
-                <section class="widget">
-                    <header>
-                        <h4 id="ongoing">Ongoing</h4>
-                        <div class="widget-controls">
-                            <!-- <a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a> -->
-                            <!-- <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a> -->
-                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
-                            <!-- <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a> -->
-                        </div>
-                    </header>
-                    hvjhjgjgjgj
-                </section>
-            </div>
-            <div class="col-lg-3">
-                <section class="widget">
-                    <header>
-                        <h4>Done</h4>
-                        <div class="widget-controls">
-                            <!-- <a title="Options" href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                            <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a> -->
-                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
-                            <!-- <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a> -->
-                        </div>
-                    </header>
-                    hgjhgjhgjggjjj
-                </section>
-            </div>
-            <div class="col-lg-3">
+
+            @foreach($cardcategories as $cardcategories) 
+                <div class="col-lg-3">
+                    <section class="widget">
+                        <header>
+                            <h4>{{ $cardcategories->name }}</h4>
+                            <div class="widget-controls">
+                                <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                            </div>
+                        </header>
+                        hvjhjgjgjgj
+                    </section>
+                </div>
+            @endforeach
+
+
+
+           <!--  <div class="col-lg-3">
                 <section class="widget">
                     <header>
                         <h4>Done</h4>
@@ -88,6 +77,17 @@
                     hgjhgjhgjggjjj
                 </section>
             </div>
+            <div class="col-lg-3">
+                <section class="widget">
+                    <header>
+                        <h4>Done</h4>
+                        <div class="widget-controls">
+                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                        </div>
+                    </header>
+                    hgjhgjhgjggjjj
+                </section>
+            </div> -->
             <div id="add_list" class="col-lg-3">
                 <section class="widget">
                       <h4><i class="glyphicon glyphicon-plus"></i> Add a list</h4>
