@@ -29,10 +29,10 @@
                         </button> 
                         </div>
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-block btn-sm btn-danger">
+                            <a href="{{ route('home') }}" class="btn btn-block btn-sm btn-danger">
                                 <span class="small-circle"><i class="fa fa-caret-right"></i></span>
                                 <small>Cancel</small>
-                            </button>
+                            </a>
                         </div>
                     </fieldset>
                 </form>

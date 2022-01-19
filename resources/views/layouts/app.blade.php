@@ -374,5 +374,48 @@
             @yield('content')
         </main>
     </div>
+
+        <!-- common libraries. required for every page-->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/jquery-pjax/jquery.pjax.js"></script>
+    <script src="lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+    <script src="lib/widgster/widgster.js"></script>
+    <script src="lib/underscore/underscore.js"></script>
+
+    <!-- common application js -->
+    <script src="js/app.js"></script>
+    <script src="js/settings.js"></script>
+
+   <!-- page specific scripts -->
+    <!-- page libs -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="lib/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="lib/jquery.sparkline/index.js"></script>
+
+    <script src="lib/backbone/backbone.js"></script>
+    <script src="lib/backbone.localStorage/build/backbone.localStorage.min.js"></script>
+
+    <script src="lib/d3/d3.min.js"></script>
+    <script src="lib/nvd3/build/nv.d3.min.js"></script>
+
+    <!-- page application js -->
+    <script src="{{ asset('js/index.js') }}"></script>
+    <script src="{{ asset('js/chat.js') }}"></script>
+    <script>
+
+        $(document).ready(function () { 
+
+            $("#add_list").click(function(){
+
+                var showing = $("#fn").show();
+
+                $("#add_list").html(showing);     
+            });
+
+        });
+
+    </script>
+
+
 </body>
 </html>
