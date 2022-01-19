@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-     <div class="single-widget-container">
+     <!-- <div class="single-widget-container"> -->
             <section class="widget login-widget">
                 <header class="text-align-center">
                     <h4>Login to your account</h4>
@@ -58,5 +58,5 @@
                     </div>
                 </footer>
             </section>
-        </div>
+        <!-- </div> -->
 @endsection
