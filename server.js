@@ -1,10 +1,10 @@
 var express = require('express');
-const app = express();
+var app = express();
 var passport = require('passport')
 var session = require('express-session')
 var bodyParser = require('body-parser')
-// var env = require('dotenv').load()
-var exphbs = require('express-handlebars')
+// var env = require('dotenv').load();
+const { engine } = require('express-handlebars')
 var models = require("./app/models");
 
 app.get('/', function(req, res) {
@@ -19,9 +19,10 @@ models.sequelize.sync().then(function() {
 });
 
 // //For Handlebars
-app.set('views', './app/views')
-app.engine('hbs', engine({ extname: '.hbs' , defaultLayout: 'main'}));
-app.set('view engine', 'hbs');
+app.engine('handlebars', engine({ extname: '.hbs', defaultLayout: 'main' }));
+app.set('view engine', '.hbs');
+
+app.set('views', './app/views');
 
 app.listen(5000, function(err) {
     if (!err)
