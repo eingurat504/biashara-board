@@ -48,14 +48,12 @@ app.use(function(req, res, next){
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 app.get('/', function(req, res) {
     res.send('Welcome to Passport with Sequelize');
 });
 
 //Routes
-var authRoute = require('./routes/auth.js')(app,passport);
+// const { authRoute } = require('../routes/auth.js')(app,passport);
 
 //load passport strategies
 require('../config/passport/passport.js')(passport, models.user);
