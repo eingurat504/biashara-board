@@ -1,3 +1,5 @@
+// https://code.tutsplus.com/tutorials/using-passport-with-sequelize-and-mysql--cms-27537
+
 var express = require('express');
 var app = express();
 var passport = require('passport')
@@ -5,7 +7,7 @@ var session = require('express-session')
 var bodyParser = require('body-parser')
 const { engine } = require('express-handlebars')
 var models = require("./app/models");
-// var expressValidator = require('express-validator');
+// const { expressValidator } = require('express-validator');
 var flash = require('connect-flash');
 var path = require('path');
 
@@ -16,7 +18,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
 
-//Express Validator
+// //Express Validator
 // app.use(expressValidator({
 //     errorFormatter: function(param, msg, value){
 //         var namespace = param.split(',')
@@ -52,11 +54,11 @@ app.get('/', function(req, res) {
     res.send('Welcome to Passport with Sequelize');
 });
 
-//Routes
-// const { authRoute } = require('../routes/auth.js')(app,passport);
+// //Routes
+var authRoute = require('./app/routes/auth.js')(app,passport);
 
 //load passport strategies
-require('../config/passport/passport.js')(passport, models.user);
+require('./app/config/passport/passport.js')(passport, models.user);
 
 // Sync Database
 models.sequelize.sync().then(function() {
@@ -67,7 +69,7 @@ models.sequelize.sync().then(function() {
 
 // //For Handlebars
 app.engine('handlebars', engine({ extname: '.hbs', defaultLayout: 'main' }));
-app.set('view engine', '.hbs');
+app.set('view engine', 'handlebars');
 
 app.set('views', './app/views');
 
