@@ -1,18 +1,18 @@
 // https://code.tutsplus.com/tutorials/using-passport-with-sequelize-and-mysql--cms-27537
 
-var express = require('express');
-var app = express();
-var passport = require('passport')
-var session = require('express-session')
-var bodyParser = require('body-parser')
-const { engine } = require('express-handlebars')
+const express = require('express');
+const app = express();
+const passport = require('passport');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const exphbs  = require('express-handlebars');
 var models = require("./app/models");
 // const { expressValidator } = require('express-validator');
 var flash = require('connect-flash');
 var path = require('path');
 
 
- //For Passport
+// For Passport
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }})); //session secret key
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
@@ -67,11 +67,25 @@ models.sequelize.sync().then(function() {
     console.log(err, "Something went wrong with the Database Update!")
 });
 
-// //For Handlebars
-app.engine('handlebars', engine({ extname: '.hbs', defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
+// app.set('views', path.join(__dirname, 'views'));
+// app.engine('hbs', exphbs({ extname: '.hbs', defaultLayout: 'main' }));
+// app.set('view engine', 'hbs');
+app.engine('hbs', exphbs({
+    defaultLayout: 'main',
+    extname: '.hbs',
+    helpers: {
+        getShortComment(comment) {
+            if (comment.length < 64) {
+                return comment;
+            }
 
-app.set('views', './app/views');
+            return comment.substring(0, 64) + '...';
+        }
+    }
+}));
+
+app.set('view engine', 'hbs');
+
 
 app.listen(5000, function(err) {
     if (!err)
