@@ -1,13 +1,13 @@
 var exports = module.exports = {}
  
 exports.signup = function(req, res) {
-	res.render('../app/views/register.hbs', { 
+	res.render('../app/views/auth/register.hbs', { 
 		layout: false 
 	});
 }
 
 exports.signin = function(req, res) {
-	res.render('../app/views/login.hbs', { 
+	res.render('../app/views/auth/login.hbs', { 
 		layout: false 
 	});
 }
