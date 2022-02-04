@@ -48,7 +48,6 @@ module.exports = function(passport, user) {
             var password = req.body.password;
 
             //validation implementation
-            
             req.checkBody('email', 'Email is required').notEmpty();
             req.checkBody('email', 'Email is not valid').isEmail();
             req.checkBody('firstname', 'First name is required').notEmpty();
@@ -74,6 +73,7 @@ module.exports = function(passport, user) {
                 } else {
  
                     var userPassword = generateHash(password);
+                    
                     var data = {
                             email: email,
                             password: userPassword,
