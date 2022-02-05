@@ -9,7 +9,7 @@ const exphbs  = require('express-handlebars');
 var models = require("./app/models");
 // const { expressValidator } = require('express-validator');
 var flash = require('connect-flash');
-var path = require('path');
+const path = require('path');
 
 
 // For Passport
@@ -47,8 +47,15 @@ app.use(function(req, res, next){
     next();
 });
 
-//set static folder
-app.use(express.static(path.join(__dirname, '/public')));
+// set static folder 
+// Function to serve all static files
+app.use(express.static(path.join(__dirname, 'public')));
+// inside public directory.
+app.use('/css', express.static('css'));
+app.use('/img', express.static('img'));
+app.use('/js', express.static('js'));
+app.use('/lib', express.static('lib'));
+
 
 app.get('/', function(req, res) {
     res.send('Welcome to Passport with Sequelize');
@@ -67,9 +74,6 @@ models.sequelize.sync().then(function() {
     console.log(err, "Something went wrong with the Database Update!")
 });
 
-// app.set('views', path.join(__dirname, 'views'));
-// app.engine('hbs', exphbs({ extname: '.hbs', defaultLayout: 'main' }));
-// app.set('view engine', 'hbs');
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
     extname: '.hbs',
@@ -85,7 +89,6 @@ app.engine('hbs', exphbs({
 }));
 
 app.set('view engine', 'hbs');
-
 
 app.listen(5000, function(err) {
     if (!err)
