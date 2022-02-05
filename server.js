@@ -82,7 +82,6 @@ app.engine('hbs', exphbs({
             if (comment.length < 64) {
                 return comment;
             }
-
             return comment.substring(0, 64) + '...';
         }
     }

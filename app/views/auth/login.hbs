@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Biashara Board</title>
-
     <link href="css/application.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.png">
@@ -22,12 +21,12 @@
                           action="/signin" method="POST">
                         <fieldset>
                             <div class="form-group">
-                                <label for="email" >Email</label>
+                                <label for="email">Email</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-user"></i>
                                     </span>
-                                    <input id="email" type="email" class="form-control input-lg input-transparent"
+                                    <input id="email" type="email" name="email" autocomplete="email" class="form-control input-lg input-transparent"
                                            placeholder="Your Email">
                                 </div>
                             </div>
@@ -38,12 +37,13 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-lock"></i>
                                     </span>
-                                    <input id="password" type="password" class="form-control input-lg input-transparent"
+                                    <input id="password" type="password" name="password" autocomplete="current-password" class="form-control input-lg input-transparent"
                                            placeholder="Your Password">
                                 </div>
                             </div>
                         </fieldset>
                         <div class="form-actions">
+                            <!-- <input type="hidden" name="_csrf" value="<%= csrfToken %>"> -->
                             <button type="submit" class="btn btn-block btn-lg btn-danger">
                                 <span class="small-circle"><i class="fa fa-caret-right"></i></span>
                                 <small>Sign In</small>
