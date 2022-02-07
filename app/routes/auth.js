@@ -10,7 +10,6 @@ module.exports = function(app, passport) {
             failureRedirect: '/signup'
         }
     ));
-
     app.get('/dashboard', isLoggedIn, authController.dashboard);
     app.get('/logout', authController.logout);
     app.post('/signin', passport.authenticate('local-signin', {
