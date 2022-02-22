@@ -6,19 +6,18 @@ const passport = require('passport');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const exphbs  = require('express-handlebars');
-var models = require("./app/models");
-// const { expressValidator } = require('express-validator');
+const models = require("./app/models");
+const expressValidator  = require('express-validator');
 var flash = require('connect-flash');
 const path = require('path');
-
 
 // For Passport
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }})); //session secret key
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+// app.use(expressValidator());
 
-
-// //Express Validator
+// Express Validator
 // app.use(expressValidator({
 //     errorFormatter: function(param, msg, value){
 //         var namespace = param.split(',')
@@ -74,7 +73,7 @@ models.sequelize.sync().then(function() {
     console.log(err, "Something went wrong with the Database Update!")
 });
 
-app.engine('hbs', exphbs({
+app.engine('hbs', exphbs.engine({
     defaultLayout: 'main',
     extname: '.hbs',
     helpers: {
@@ -89,9 +88,16 @@ app.engine('hbs', exphbs({
 
 app.set('view engine', 'hbs');
 
+app.set('views', path.resolve(__dirname, 'views'));
+
+// app.engine('handlebars', exphbs.engine({ extname: '.hbs', defaultLayout: "main"}));
+// app.set('view engine', 'hbs');
+// app.set("views", "./views");
+
+
 app.listen(5000, function(err) {
     if (!err)
-        console.log("Site is live");
+        console.log('its working fine');
     else console.log(err)
 
 });
