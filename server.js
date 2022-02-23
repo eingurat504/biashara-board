@@ -1,5 +1,8 @@
 // https://code.tutsplus.com/tutorials/using-passport-with-sequelize-and-mysql--cms-27537
 
+
+// https://dev.to/darshanbib/user-management-for-node-js-mysql-using-sequelize-and-passportjs-44kj
+
 const express = require('express');
 const app = express();
 const passport = require('passport');
@@ -7,7 +10,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const exphbs  = require('express-handlebars');
 const models = require("./app/models");
-const expressValidator  = require('express-validator');
+const { expressValidator }  = require('express-validator');
 var flash = require('connect-flash');
 const path = require('path');
 
@@ -15,7 +18,15 @@ const path = require('path');
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }})); //session secret key
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-// app.use(expressValidator());
+// app.use(expressValidator.withDefaults({
+//   formatter: error => {
+//     return {
+//       param: formParam,
+//       msg: msg,
+//       value :value
+//     };
+//   },
+// }));
 
 // Express Validator
 // app.use(expressValidator({
@@ -46,7 +57,6 @@ app.use(function(req, res, next){
     next();
 });
 
-// set static folder 
 // Function to serve all static files
 app.use(express.static(path.join(__dirname, 'public')));
 // inside public directory.
@@ -94,10 +104,11 @@ app.set('views', path.resolve(__dirname, 'views'));
 // app.set('view engine', 'hbs');
 // app.set("views", "./views");
 
-
 app.listen(5000, function(err) {
     if (!err)
         console.log('its working fine');
     else console.log(err)
 
 });
+
+console.log(models.user);

@@ -34,7 +34,7 @@ module.exports = function(passport, user) {
             var lastname = req.body.lastname;
             var password = req.body.password;
 
-            //validation implementation
+            // validation implementation
             req.checkBody('email', 'Email is required').notEmpty();
             req.checkBody('email', 'Email is not valid').isEmail();
             req.checkBody('firstname', 'First name is required').notEmpty();
@@ -86,11 +86,10 @@ module.exports = function(passport, user) {
         passwordField : 'password',
         passReqToCallback : true // allows us to pass back the entire request to the callback
         },
-  
         function(req, email, password, done) {
       
               var User = user;
-          
+
               var isValidPassword = function(userpass,password){
                 return bCrypt.compareSync(password, userpass);
               }
