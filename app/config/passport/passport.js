@@ -2,8 +2,8 @@ var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport, user) {
 
-    var User = user;
-    var LocalStrategy = require('passport-local').Strategy;
+    const User = user;
+    const LocalStrategy = require('passport-local').Strategy;
 
     //serialize
     passport.serializeUser(function(user, done) {
@@ -26,14 +26,15 @@ module.exports = function(passport, user) {
             usernameField: 'email',
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
-        },function(req, email, password, done) {
+        },
+        function(req, email, password, done) {
 
             var email = req.body.email;
             var firstname = req.body.firstname;
             var lastname = req.body.lastname;
             var password = req.body.password;
 
-            //validation implementation
+            // validation implementation
             req.checkBody('email', 'Email is required').notEmpty();
             req.checkBody('email', 'Email is not valid').isEmail();
             req.checkBody('firstname', 'First name is required').notEmpty();
@@ -85,11 +86,10 @@ module.exports = function(passport, user) {
         passwordField : 'password',
         passReqToCallback : true // allows us to pass back the entire request to the callback
         },
-  
         function(req, email, password, done) {
       
               var User = user;
-          
+
               var isValidPassword = function(userpass,password){
                 return bCrypt.compareSync(password, userpass);
               }
@@ -109,6 +109,6 @@ module.exports = function(passport, user) {
               });
       
         }
-  ));
+    ));
   
 }

@@ -9,7 +9,6 @@ exports.create = function(req,res){
     var Board = require('../models/card.js');
 
     var testing = Board.create();
-    console.log(Card);
 
     //validation implementation
     req.checkBody('title', 'Title is required').notEmpty();
