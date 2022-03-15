@@ -21,13 +21,12 @@ module.exports = function(passport, user) {
         });
     });
 
-    passport.use('local-signup', new LocalStrategy(
-        {
+    passport.use('local-signup', new LocalStrategy({
             usernameField: 'email',
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
-        function(req, email, password, done) {
+        async function(req, email, password, done) {
 
             var email = req.body.email;
             var firstname = req.body.firstname;
