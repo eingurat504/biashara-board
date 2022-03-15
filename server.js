@@ -111,4 +111,4 @@ app.listen(5000, function(err) {
 
 });
 
-console.log(models.user);
+console.log(passport.authenticate());
