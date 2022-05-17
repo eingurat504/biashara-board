@@ -1,4 +1,6 @@
-var bCrypt = require('bcrypt-nodejs');
+const bCrypt = require('bcrypt-nodejs');
+const express = require('express'); 
+const app = express();
 
 module.exports = function(passport, user) {
 
