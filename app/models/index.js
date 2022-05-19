@@ -28,4 +28,7 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.boards = require("../models/board.js")(sequelize, Sequelize);
+db.cards = require("../models/card.js")(sequelize, Sequelize);
+
 module.exports = db;

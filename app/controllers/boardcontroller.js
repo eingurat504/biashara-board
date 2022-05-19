@@ -1,14 +1,11 @@
-
+const db = require('../models');
+const Board = db.boards;
 
 async function create(req,res){
 
     var title = req.body.title;
     var description = req.body.description;
     var status = req.body.status;
-
-    var Board = require('../models/card.js');
-
-    var testing = Board.create();
 
     //validation implementation
     req.checkBody('title', 'Title is required').notEmpty();
