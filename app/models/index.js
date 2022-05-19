@@ -9,7 +9,7 @@ const db = {};
 
 const sequelize = new Sequelize(config.database, config.user, config.password, {
     host: config.host,
-    dialect: 'mysql2',
+    dialect: 'mysql',
     port: config.port,
     operatorsAliases: false
   });

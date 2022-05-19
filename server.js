@@ -42,7 +42,7 @@ app.get('/', function(req, res) {
 });
 
 //load passport strategies
-require('./app/config/passport/passport.js')(passport, models.user);
+// require('./app/config/passport/passport.js')(passport, models.user);
 
 // Sync Database
 models.sequelize.sync().then(function() {

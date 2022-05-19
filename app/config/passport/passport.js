@@ -1,8 +1,9 @@
 const bCrypt = require('bcrypt-nodejs');
 const express = require('express'); 
 const app = express();
-const db =  require('../models');
+const db =  require('../../models');
 const User = db.users;
+const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 //serialize
