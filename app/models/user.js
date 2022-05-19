@@ -1,6 +1,12 @@
+const { Model } = require('sequelize');
+
 module.exports = function(sequelize, Sequelize) {
 
-    var User = sequelize.define('user', {
+    class User extends Model{
+
+    };
+
+    User.init({
 
         id: {
             autoIncrement: true,
@@ -47,6 +53,10 @@ module.exports = function(sequelize, Sequelize) {
             defaultValue: 'active'
         }
 
+    },{
+        sequelize,
+        tableName: 'users',
+        modelName: 'User'
     });
 
     return User;
