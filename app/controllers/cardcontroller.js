@@ -1,16 +1,11 @@
-var exports = module.exports = {}
+const db = require('../models');
+const Card = db.cards;
 
-exports.create = function(req,res){
+async function create(req,res){
 
     var title = req.body.title;
     var description = req.body.description;
     var status = req.body.status;
-
-    var Card = require('../models/card.js');
-
-    var testing = Card.create();
-
-    // console.log(Card);
 
     //validation implementation
     req.checkBody('title', 'Title is required').notEmpty();
@@ -44,4 +39,8 @@ exports.create = function(req,res){
         res.redirect('/dashboard');
     }
  
+}
+
+module.exports = {
+    create
 }
