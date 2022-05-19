@@ -1,6 +1,4 @@
 // https://code.tutsplus.com/tutorials/using-passport-with-sequelize-and-mysql--cms-27537
-
-
 // https://dev.to/darshanbib/user-management-for-node-js-mysql-using-sequelize-and-passportjs-44kj
 
 const express = require('express');
@@ -42,9 +40,6 @@ app.use('/lib', express.static('lib'));
 app.get('/', function(req, res) {
     res.send('Welcome to Passport with Sequelize');
 });
-
-// //Routes
-// var authRoute = require('./app/routes/auth.js')(app,passport);
 
 //load passport strategies
 require('./app/config/passport/passport.js')(passport, models.user);
