@@ -1,6 +1,11 @@
+const { Model } = require('sequelize');
 module.exports = function(sequelize, Sequelize) {
 
-    var Board = sequelize.define('board', {
+    class Board extends Model {
+
+    };
+
+    Board.init({
 
         id: {
             autoIncrement: true,
@@ -24,6 +29,10 @@ module.exports = function(sequelize, Sequelize) {
         }
 
 
+    }{
+        sequelize,
+        tableName: 'boards',
+        modelName: 'Board'
     });
 
     return Board;
