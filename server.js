@@ -80,4 +80,3 @@ app.listen(5000, function(err) {
 
 });
 
-console.log(passport.authenticate());

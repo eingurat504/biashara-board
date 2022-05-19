@@ -1,26 +1,30 @@
-var exports = module.exports = {}
- 
-exports.signup = function(req, res) {
+async function signup(req, res){
 	res.render('../app/views/auth/register.hbs', { 
 		layout: false 
 	});
 }
 
-exports.signin = function(req, res) {
+async function signin(req, res){
 	res.render('../app/views/auth/login.hbs', { 
 		layout: false 
 	});
 }
 
-exports.dashboard = function(req,res){
+async function dashboard(req, res){
 	res.render('../app/views/home.hbs'); 
 }
 
-exports.logout = function(req,res){
-  req.session.destroy(function(err) {
-	res.redirect('../app/views/login.hbs', {
-		layout: false 
-	});
-  });
+async function logout(req, res){
+	req.session.destroy(function(err) {
+		res.redirect('../app/views/login.hbs', {
+			layout: false 
+		});
+	  });
+}
 
+module.exports = {
+	signup,
+	signin,
+	dashboard,
+	logout
 }
