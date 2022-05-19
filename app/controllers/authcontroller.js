@@ -14,6 +14,7 @@ async function dashboard(req, res){
 	res.render('../app/views/home.hbs'); 
 }
 
+
 async function logout(req, res){
 	req.session.destroy(function(err) {
 		res.redirect('../app/views/login.hbs', {
@@ -23,8 +24,8 @@ async function logout(req, res){
 }
 
 module.exports = {
-	signup,
-	signin,
-	dashboard,
-	logout
+    signin,
+    signup,
+    dashboard,
+    logout
 }

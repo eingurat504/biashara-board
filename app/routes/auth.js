@@ -1,9 +1,12 @@
 const express = require('express');
 const passport = require('passport');
 const router = express();
-var authController = require('../controllers/authcontroller.js');
-// var emailController = require('../controllers/emailcontroller.js');
- 
+
+var indexController = require('../controllers/indexcontroller.js');
+var authController = require('../controllers/authController.js');
+
+router.get('/', indexController.index);
+
 /**
  * Authenticate
  */
@@ -13,13 +16,13 @@ router.post('/signup', passport.authenticate('local-signup', {
         failureRedirect: '/signup'
     }
 ));
+
 router.get('/signin', authController.signin);
 router.post('/signin', passport.authenticate('local-signin', {
     successRedirect: '/dashboard',
     failureRedirect: '/signin'
 }
 ));
-
 
 router.get('/dashboard', isLoggedIn, authController.dashboard);
 router.get('/logout', authController.logout);

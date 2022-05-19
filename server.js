@@ -1,18 +1,17 @@
 // https://code.tutsplus.com/tutorials/using-passport-with-sequelize-and-mysql--cms-27537
-
-
 // https://dev.to/darshanbib/user-management-for-node-js-mysql-using-sequelize-and-passportjs-44kj
 
 const express = require('express');
 const app = express();
 const passport = require('passport');
 const session = require('express-session');
-const bodyParser = require('body-parser');
 const exphbs  = require('express-handlebars');
 const models = require("./app/models");
 const { expressValidator }  = require('express-validator');
 var flash = require('connect-flash');
 const path = require('path');
+
+const appRouter = require('./app/routes/auth');
 
 // For Passport
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }})); //session secret key
@@ -39,15 +38,15 @@ app.use('/js', express.static('js'));
 app.use('/lib', express.static('lib'));
 
 
-app.get('/', function(req, res) {
-    res.send('Welcome to Passport with Sequelize');
-});
+// app.get('/', function(req, res) {
+//     res.send('Welcome to Passport with Sequelize');
+// });
 
-// //Routes
-// var authRoute = require('./app/routes/auth.js')(app,passport);
+
+app.use('/', appRouter);
 
 //load passport strategies
-require('./app/config/passport/passport.js')(passport, models.user);
+// require('./app/config/passport/passport.js')(passport, models.user);
 
 // Sync Database
 models.sequelize.sync().then(function() {
