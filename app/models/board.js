@@ -30,7 +30,7 @@ module.exports = function(sequelize, Sequelize) {
         }
 
 
-    }{
+    },{
         sequelize,
         tableName: 'boards',
         modelName: 'Board'
