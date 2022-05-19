@@ -1,34 +1,35 @@
 const express = require('express');
 const passport = require('passport');
 const router = express();
-var authController = require('../controllers/authcontroller.js');
-// var emailController = require('../controllers/emailcontroller.js');
- 
+// var authController = require('../controllers/indexcontroller.js');
+var indexController = require('../controllers/indexcontroller.js');
+
+router.get('/', indexController.index);
+
 /**
  * Authenticate
  */
-router.get('/signup', authController.signup);
-router.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/signup'
-    }
-));
-router.get('/signin', authController.signin);
-router.post('/signin', passport.authenticate('local-signin', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/signin'
-}
-));
+// router.get('/signup', authController.signup);
+// router.post('/signup', passport.authenticate('local-signup', {
+//         successRedirect: '/dashboard',
+//         failureRedirect: '/signup'
+//     }
+// ));
+// router.get('/signin', authController.signin);
+// router.post('/signin', passport.authenticate('local-signin', {
+//     successRedirect: '/dashboard',
+//     failureRedirect: '/signin'
+// }
+// ));
 
+// router.get('/dashboard', isLoggedIn, authController.dashboard);
+// router.get('/logout', authController.logout);
 
-router.get('/dashboard', isLoggedIn, authController.dashboard);
-router.get('/logout', authController.logout);
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next(); 
-    res.redirect('/signin');
-}
+// function isLoggedIn(req, res, next) {
+//     if (req.isAuthenticated())
+//         return next(); 
+//     res.redirect('/signin');
+// }
 
 // router.get('/email', isLoggedIn, emailController.email);
 // router.get('/compose', isLoggedIn, emailController.compose);
