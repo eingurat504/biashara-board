@@ -1,6 +1,6 @@
-var exports = module.exports = {}
 
-exports.create = function(req,res){
+
+async function create(req,res){
 
     var title = req.body.title;
     var description = req.body.description;
@@ -42,4 +42,8 @@ exports.create = function(req,res){
         res.redirect('/dashboard');
     }
  
+}
+
+module.exports = {
+    create
 }
