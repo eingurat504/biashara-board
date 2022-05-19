@@ -5,8 +5,14 @@ const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 const config = require(__dirname + '/../config/config.js');
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
 const db = {};
+
+const sequelize = new Sequelize(config.database, config.user, config.password, {
+    host: config.host,
+    dialect: 'mysql2',
+    port: config.port,
+    operatorsAliases: false
+  });
 
 fs
     .readdirSync(__dirname)
