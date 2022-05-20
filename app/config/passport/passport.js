@@ -7,27 +7,27 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 //serialize
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
+// passport.serializeUser(function(user, done) {
+//     done(null, user.id);
+// });
 
 // deserialize user 
-passport.deserializeUser(function(id, done) {
-    User.findById(id).then(function(user) {
-        if (user) {
-            done(null, user.get());
-        } else {
-            done(user.errors, null);
-        }
-    });
-});
+// passport.deserializeUser(function(id, done) {
+//     User.findById(id).then(function(user) {
+//         if (user) {
+//             done(null, user.get());
+//         } else {
+//             done(user.errors, null);
+//         }
+//     });
+// });
 
 passport.use('local-signup', new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
-    async function(req, email, password, done) {
+    async (req, email, password, done) => {
 
         var email = req.body.email;
         var firstname = req.body.firstname;
@@ -113,3 +113,5 @@ passport.use('local-signin', new LocalStrategy(
   
     }
 ));
+
+module.exports =  passport;
