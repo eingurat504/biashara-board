@@ -34,8 +34,6 @@ passport.use('local-signup', new LocalStrategy({
         var lastname = req.body.lastname;
         var password = req.body.password;
 
-        console.log(email);
-
         // validation implementation
         req.checkBody('email', 'Email is required').notEmpty();
         req.checkBody('email', 'Email is not valid').isEmail();
