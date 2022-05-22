@@ -4,6 +4,13 @@ module.exports = function(sequelize, Sequelize) {
 
     class User extends Model{
 
+        static associate({Board}) {
+            this.hasMany(Board, {foreignKey: 'userId',  as: 'boards' })
+        }
+        static associate({Card}) {
+            this.hasMany(Card, {foreignKey: 'createdBy', as: 'cards' })
+        }
+
     };
 
     User.init({
