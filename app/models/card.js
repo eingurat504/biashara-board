@@ -3,7 +3,9 @@ const { Model } = require('sequelize');
 module.exports = function(sequelize, Sequelize) {
 
     class Card extends Model{
-        
+        static associate({Board}) {
+            this.belongsTo(Board, {foreignKey: 'boardId', as: 'boards' })
+        }
     };
 
      Card.init({
@@ -13,6 +15,10 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.INTEGER
         },
         userId: {
+            type: Sequelize.INTEGER,
+            notEmpty: true
+        },
+        boardId: {
             type: Sequelize.INTEGER,
             notEmpty: true
         },
