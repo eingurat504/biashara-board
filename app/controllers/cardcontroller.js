@@ -3,14 +3,14 @@ const Card = db.cards;
 
 async function create(req,res){
 
-    var title = req.body.title;
-    var description = req.body.description;
-    var status = req.body.status;
+    const title = req.body.title;
+    const description = req.body.description;
+    const status = req.body.status;
 
     //validation implementation
     req.checkBody('title', 'Title is required').notEmpty();
 
-    var errors = req.validationErrors();
+    const errors = req.validationErrors();
     
     if(errors){
         res.render('./card/create',{
@@ -18,7 +18,7 @@ async function create(req,res){
         });
     }else{
 
-        var data = {
+        const data = {
             title: req.body.title,
             description: req.body.description,
             status: req.body.status

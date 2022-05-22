@@ -6,21 +6,21 @@ const User = db.users;
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-//serialize
-// passport.serializeUser(function(user, done) {
-//     done(null, user.id);
-// });
+// serialize
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
 
 // deserialize user 
-// passport.deserializeUser(function(id, done) {
-//     User.findById(id).then(function(user) {
-//         if (user) {
-//             done(null, user.get());
-//         } else {
-//             done(user.errors, null);
-//         }
-//     });
-// });
+passport.deserializeUser(function(id, done) {
+    User.findById(id).then(function(user) {
+        if (user) {
+            done(null, user.get());
+        } else {
+            done(user.errors, null);
+        }
+    });
+});
 
 passport.use('local-signup', new LocalStrategy({
         usernameField: 'email',
