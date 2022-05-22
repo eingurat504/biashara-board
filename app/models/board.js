@@ -27,9 +27,11 @@ module.exports = function(sequelize, Sequelize) {
         status: {
             type: Sequelize.ENUM('active', 'inactive'),
             defaultValue: 'active'
+        },
+        createdBy: {
+            type: Sequelize.INTEGER,
+            notEmpty: true
         }
-
-
     },{
         sequelize,
         tableName: 'boards',
