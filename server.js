@@ -1,12 +1,14 @@
 // https://code.tutsplus.com/tutorials/using-passport-with-sequelize-and-mysql--cms-27537
 // https://dev.to/darshanbib/user-management-for-node-js-mysql-using-sequelize-and-passportjs-44kj
-
+const client = require('./app/config/config.js');
 const express = require('express');
 const app = express();
 const passport = require('passport');
 const session = require('express-session');
+const sequelize = require('sequelize');
 const exphbs  = require('express-handlebars');
 const models = require("./app/models");
+const User = require("./app/models/user.js");
 const { expressValidator }  = require('express-validator');
 var flash = require('connect-flash');
 const path = require('path');
@@ -47,6 +49,9 @@ app.use('/', appRouter);
 
 //load passport strategies
 // require('./app/config/passport/passport.js')(passport, models.user);
+// passport.use(User.createStrategy());
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 // Sync Database
 models.sequelize.sync().then(function() {
@@ -54,6 +59,8 @@ models.sequelize.sync().then(function() {
 }).catch(function(err) {
     console.log(err, "Something went wrong with the Database Update!")
 });
+
+client.connect();
 
 app.engine('hbs', exphbs.engine({
     defaultLayout: 'main',
@@ -78,4 +85,6 @@ app.listen(8000, function(err) {
     else console.log(err)
 
 });
+
+module.exports = app;
 
