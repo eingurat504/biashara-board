@@ -2,13 +2,13 @@
 // https://dev.to/darshanbib/user-management-for-node-js-mysql-using-sequelize-and-passportjs-44kj
 const client = require('./app/config/config.js');
 const express = require('express');
-const app = express();
 const passport = require('passport');
 const session = require('express-session');
 const sequelize = require('sequelize');
 const exphbs  = require('express-handlebars');
 const models = require("./app/models");
 const User = require("./app/models/user.js");
+const app = express();
 const { expressValidator }  = require('express-validator');
 var flash = require('connect-flash');
 const path = require('path');
@@ -48,10 +48,7 @@ app.use('/lib', express.static('lib'));
 app.use('/', appRouter);
 
 //load passport strategies
-// require('./app/config/passport/passport.js')(passport, models.user);
-// passport.use(User.createStrategy());
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+require('./config/passport/passport.js')(passport);
 
 // Sync Database
 models.sequelize.sync().then(function() {

@@ -11,14 +11,14 @@ router.get('/', indexController.index);
  * Authenticate
  */
 router.get('/signup', authController.signup);
-router.post('/signup', passport.authenticate('local-signup', {
+router.post('/signup', passport.authenticate('register', {
         successRedirect: '/dashboard',
         failureRedirect: '/signup'
     }
 ));
 
 router.get('/signin', authController.signin);
-router.post('/signin', passport.authenticate('local-signin', {
+router.post('/signin', passport.authenticate('login', {
     successRedirect: '/dashboard',
     failureRedirect: '/signin'
 }
