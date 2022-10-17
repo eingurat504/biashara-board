@@ -22,13 +22,13 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
-passport.use('local-signup', new LocalStrategy({
-        usernameField: 'email',
+passport.use('register', new LocalStrategy({
+        usernameField: 'username',
         passwordField: 'password',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
-    async (req, email, password, done) => {
-
+    async (req, username, password, done) => {
+console.log(req)
         var email = req.body.email;
         var firstname = req.body.firstname;
         var lastname = req.body.lastname;
@@ -82,7 +82,7 @@ passport.use('local-signup', new LocalStrategy({
 /**
  * login authentication
  */
-passport.use('local-signin', new LocalStrategy(
+passport.use('login', new LocalStrategy(
     {
     // by default, local strategy uses username and password, we will override with email
     usernameField : 'email',
