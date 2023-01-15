@@ -42,15 +42,13 @@ app.use('/lib', express.static('lib'));
 
 // app.get('/', function(req, res) {
 //     res.send('Welcome to Passport with Sequelize');
+https://www.makeuseof.com/passport-authenticate-node-postgres/#create-database-helper-functions
 // });
 
 
 app.use('/', appRouter);
 
-//load passport strategies
-require('./config/passport/passport.js')(passport);
 
-// Sync Database
 models.sequelize.sync().then(function() {
     console.log('Nice! Database looks fine')
 }).catch(function(err) {

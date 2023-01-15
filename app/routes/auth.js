@@ -11,14 +11,16 @@ router.get('/', indexController.index);
  * Authenticate
  */
 router.get('/signup', authController.signup);
-router.post('/signup', passport.authenticate('register', {
+router.post('/signup', passport.authenticate('local-signup', {
+        session: false ,
         successRedirect: '/dashboard',
         failureRedirect: '/signup'
     }
 ));
 
 router.get('/signin', authController.signin);
-router.post('/signin', passport.authenticate('login', {
+router.post('/signin', passport.authenticate('local-login', {
+    session: false ,
     successRedirect: '/dashboard',
     failureRedirect: '/signin'
 }
@@ -48,6 +50,5 @@ function isLoggedIn(req, res, next) {
 // router.get('/email', isLoggedIn, emailController.email);
 // router.get('/compose', isLoggedIn, emailController.compose);
 // router.post('/compose', isLoggedIn, emailController.send);
-
 
 module.exports = router;
