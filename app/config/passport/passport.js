@@ -28,7 +28,7 @@ passport.use('register', new LocalStrategy({
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
     async (req, username, password, done) => {
-console.log(req)
+
         var email = req.body.email;
         var firstname = req.body.firstname;
         var lastname = req.body.lastname;
@@ -78,19 +78,12 @@ console.log(req)
     }
 ));
 
-
+const options = {};
 /**
  * login authentication
  */
-passport.use('login', new LocalStrategy(
-    {
-    // by default, local strategy uses username and password, we will override with email
-    usernameField : 'email',
-    passwordField : 'password',
-    passReqToCallback : true // allows us to pass back the entire request to the callback
-    },
-    function(req, email, password, done) {
-  
+passport.use(new LocalStrategy(options, (email, password, done) => {
+        console.log(req);
           var User = user;
 
           var isValidPassword = function(userpass,password){
